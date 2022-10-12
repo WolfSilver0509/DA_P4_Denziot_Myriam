@@ -1,0 +1,20 @@
+Mettre des docstring partout et les appeler avec __doc__ 
+
+Obligation pep 8 organisation Organisez vos fichiers
+Que vous regardiez une carte lorsque vous êtes perdu en pleine nature, ou un module Python lorsque vous êtes perdu dans vos pensées, il vous sera utile de savoir où trouver les choses sur votre page.
+
+Bien sûr, la PEP 8 a un ordre recommandé pour vos fichiers Python !
+
+Les commentaires qui concernent la totalité du fichier vont en haut.
+
+Les imports suivent cet ordre :
+
+Modules de la bibliothèque standard, par exemple  import random  .
+
+Modules de bibliothèques tierces, par exemple  import sklearn  .
+
+Modules locaux, par exemple  import mymodule  .
+
+Les constantes, par exemple  MY_CONSTANT = 77  .
+
+Tout autre code.
