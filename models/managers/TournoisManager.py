@@ -16,7 +16,7 @@ class TournoisManager():
                     'Date de debut': tournoi.date_de_debut,
                     'Nombre de tours': tournoi.nombre_de_tours,
                     'Tournees': tournoi.tournees,
-                    'Joueur': tournoi.joueur,
+                    'Joueurs': tournoi.joueurs,
                     'Controle du temps': tournoi.controle_du_temps,
                     'Description': tournoi.description})
 
@@ -25,8 +25,10 @@ class TournoisManager():
     tournois = self.table.all()
     instanciated_tournaments = []
     for tournoi in tournois:
-      instanciated_tournaments.append(Tournoi(tournoi["Nom"], tournoi["Lieu"], tournoi["Date de debut"], tournoi["Nombre de tours"],tournoi["Tournees"],tournoi["Joueur"],tournoi["Controle du temps"],tournoi["Description"]))
+      instanciated_tournaments.append(Tournoi(tournoi["Nom"], tournoi["Lieu"], tournoi["Date de debut"], tournoi["Nombre de tours"],tournoi["Tournees"],tournoi["Joueurs"],tournoi["Controle du temps"],tournoi["Description"]))
 
     #NE PAS OUBLIER 
     return instanciated_tournaments
-   
+
+
+    

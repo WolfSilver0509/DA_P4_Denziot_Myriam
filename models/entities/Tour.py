@@ -5,3 +5,5 @@ class Tour():
     self.nom = nom
     self.date_heure_debut = date_heure_debut
     self.date_heure_fin = date_heure_fin
+    #ajout identifiant tournois auquels ils appartiens 
+    

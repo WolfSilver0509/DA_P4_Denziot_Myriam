@@ -23,8 +23,13 @@ class PlayerManager():
     players = self.table.all()
     instanciated_players = []
     for player in players:
-      instanciated_players.append(Joueur(player["Nom"], player["Prenom"], player["Date de naissance"], player["Sexe"], player["Classement"]))
+      joueur= Joueur(player["Nom"], player["Prenom"], player["Date de naissance"], player["Sexe"], player["Classement"]).serializer_player()
+      instanciated_players.append(joueur)
 
     #NE PAS OUBLIER 
     return instanciated_players
     #print(names)  # List of all text field values.
+
+  def has_enough_players(self):
+    """ Fonction pour verifier les 8 joueurs"""
+    return len(self.table)>= 8

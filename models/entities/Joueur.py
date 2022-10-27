@@ -1,3 +1,5 @@
+import json
+
 class Joueur():
   """Modèle représentant un joueur."""
   def __init__(self,nom_de_famille,prenom,date_de_naissance,sexe,classement):
@@ -8,6 +10,10 @@ class Joueur():
     self.sexe = sexe
     self.classement = classement
 
-    
+  def serializer_player (self):
+    """ Fonction pour sérialiser notre objet joueur dans joueur entities ( prendre la class pour mettre sous forme de dictionnaire ) """
+    return self.__dict__
+
+   
 
 # définis les attributs de la classe !
