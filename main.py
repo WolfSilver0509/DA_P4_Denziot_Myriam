@@ -3,12 +3,12 @@ from controllers.TournoisController import TournoisController
 
 
 menu_options = {
-    1: '➕ 🧞‍♀️ Nouveau Joueur',
-    2: '📋Listes des joueurs',
-    3: '➕♟️ Nouveau Tournois♟ ♟️',
-    4: '📋Listes des tournois',
-    5: 'Exit',
-}
+  1: '➕ 🧞‍♀️ Nouveau Joueur',
+  2: '📋Listes des joueurs',
+  3: '➕♟️ Nouveau Tournois♟ ♟️',
+  4: '📋Listes des tournois',
+  5: '💢 Reprendre un tournois',
+  6: 'Exit',}
 
 def main():
   for key in menu_options.keys():
@@ -35,6 +35,8 @@ if __name__=='__main__':
           controller = TournoisController()
           controller.list_tournois()
         elif option == 5:
+          print(" Faire fonction pour reprendre le tournois ")
+        elif option == 6:
           print('C\'est fini ! ')
           exit()
         else:

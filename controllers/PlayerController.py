@@ -9,7 +9,7 @@ class PlayerController():
     self.player_manager = PlayerManager()
 
   def add_player(self):
-    """ Instancier l'entité l15 / l16 j'appel mon manager dans laquel metho add"""
+    """ Instancier l'entité l15 / l16 j'appel mon manager dans laquel metho add dans player controller"""
    
     nom_de_famille, prenom, date_de_naissance, sexe, classement = ViewPlayer.add_player()
     player = Joueur(nom_de_famille, prenom, date_de_naissance, sexe, classement)
@@ -17,6 +17,6 @@ class PlayerController():
     ViewPlayer.add_player_success()
 
   def list_players(self):
-    """ Fonction qui liste les players depuis tiny db"""
+    """ Fonction qui liste les players depuis tiny db dans player controller"""
     players = self.player_manager.list()
     ViewPlayer.list_players(players)

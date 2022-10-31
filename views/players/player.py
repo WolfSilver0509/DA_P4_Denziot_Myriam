@@ -17,11 +17,12 @@ class ViewPlayer():
 
   @staticmethod
   def add_player_success():
+    """ Fonction de print joueur ajouter avec succés Views players """
     print(" Joueur ajouté !")
    
   @staticmethod
   def list_players(players):
-    """Liste des joueurs"""
+    """Liste des joueurs dans la views player"""
     for player in players:
       print(player['nom_de_famille'])
     

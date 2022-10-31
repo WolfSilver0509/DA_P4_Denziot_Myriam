@@ -37,11 +37,13 @@ class TournoisController():
     
 
   def list_tournois(self):
-    """ Fonction qui liste les players depuis tiny db"""
+    """ Fonction qui liste les players depuis tiny db dans tournois controller"""
     tournois = self.tournoi_manager.list()
     ViewTournois.list_tournois(tournois)
 
   def go_play_tour(self, joueurs):
+    """ Lancement du Tour 1 dans tournois controller """
+    
     for i in range(4):
       ViewTournois.display_message_start_tour(i)
       # Create tour

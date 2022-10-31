@@ -8,8 +8,8 @@ class PlayerManager():
     self.table = self.db.table('joueurs')
 
   def add(self, player: Joueur):
+    """ Taper dans tiny db pour inserer dans la table les donnés saisie dans player manager"""
     print(player.nom_de_famille)
-    """ Taper dans tiny db pour inserer dans la table les donnés saisie dans views"""
     self.table.insert({'Nom': player.nom_de_famille,
                     'Prenom': player.prenom,
                     'Date de naissance': player.date_de_naissance,
@@ -17,7 +17,7 @@ class PlayerManager():
                     'Classement': player.classement})
 
   def list(self): 
-    """ Récupérer tous les players """
+    """ Récupérer tous les players dans player manager """
     #names = [player.get('Nom') for player in self.table.all()]
      #= [player.get('Nom') for player in self.table.all()]
     players = self.table.all()
@@ -31,5 +31,5 @@ class PlayerManager():
     #print(names)  # List of all text field values.
 
   def has_enough_players(self):
-    """ Fonction pour verifier les 8 joueurs"""
+    """ Fonction pour verifier les 8 joueurs dans player manager"""
     return len(self.table)>= 8

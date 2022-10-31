@@ -5,7 +5,8 @@ class ViewMatchs():
 
   @staticmethod 
   def indicate_results(joueur1, joueur2):
-    print ( f" Rentrez les résultats du match entre le  {joueur1['prenom']}  {joueur1['nom_de_famille']} et le {joueur2['prenom']} {joueur2['nom_de_famille']} : ")
+    """ Affichage des résultats  dans views match """
+    print ( f" Rentrez les résultats du match entre  {joueur1['prenom']}  {joueur1['nom_de_famille']} et {joueur2['prenom']} {joueur2['nom_de_famille']} : ")
     resultatJ1 = input('Résultat de '+joueur1['prenom']+' '+joueur1['nom_de_famille'] + ' ')
     resultatJ2 = input('Résultat de '+joueur2['prenom']+' '+joueur2['nom_de_famille'] + ' ')
 

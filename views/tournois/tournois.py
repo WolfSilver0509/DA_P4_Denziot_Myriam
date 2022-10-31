@@ -6,6 +6,7 @@ class ViewTournois():
 
   @staticmethod # statique methode  pas besoin d'instancier la class ( quand la méthode na pas besoin de faire appel à des prop ou à des méthodes de la class )
   def add_tournament(players):
+    """ Ajouter un tournois dans views tournois"""
     selected_players = []
     selected_players_json = []
     nom = input("Nom :  ")
@@ -34,20 +35,23 @@ class ViewTournois():
 
   @staticmethod
   def add_tournament_success():
+    """ message d'ajout de tournois avec succés dans views tournois"""
     print(" Tournois ajouté !!")
    
   @staticmethod
   def list_tournois(tournois):
-    """Listes des tournois"""
+    """Listes des tournois dans views tounois"""
     for tournoi in tournois:
       print(tournoi.nom)
       
   @staticmethod
   def error_players8():
-    print("Il vous faut minimum 8 Joueurs pour lancer un tournois !")
+     """ message d'erreur de tournois dans views tournois"""
+     print("Il vous faut minimum 8 Joueurs pour lancer un tournois !")
 
   @staticmethod
   def display_message_start_tour(no_tour):
+    """ message start tour views tournois"""
     print("Le tour "+str(no_tour)+" commence !")
 
 
