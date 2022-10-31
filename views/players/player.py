@@ -23,7 +23,7 @@ class ViewPlayer():
   def list_players(players):
     """Liste des joueurs"""
     for player in players:
-      print(player.nom_de_famille)
+      print(player['nom_de_famille'])
     
 
    

@@ -1,0 +1,26 @@
+Condition 
+
+Si tournois existant reprendre 
+ reprendre ou on s'est arreter ( ex tour 1 ou tour 2)
+sinon proposer un nouveau tournois 
+
+Avant de lancer le tour 1 
+Posez question voulez vous quitter ou commencer le tour 1  ? 
+Afficher les match du tour 
+J1 contre J5 
+J2 contre J6
+Rentre les resultat du premier math 
+
+Faire condition 
+
+si resultat J1 = 1 autre joueur = 0  
+
+si 0  autre joueur = 1 
+
+Si 0.5 autre oueur 0.5
+
+Pour chaque tour Faire ça !
+
+Ensuite re trier en fonction des résultats joueurs 
+
+Verifier si le pop n'est pas utliser 

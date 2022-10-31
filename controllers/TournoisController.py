@@ -47,7 +47,8 @@ class TournoisController():
       # Create tour
       tour = Tour("Round "+str(i), json.dumps(datetime.datetime.now(), default=str), '')
       self.tour_manager.add(tour)
-      joueurs.sort(key=lambda x: int(x['classement']))
+      joueurs = sorted(joueurs, key=lambda x: int(x['classement']), reverse= True )
+      #pprint(joueurs) # trie des joueurs par classement 
       matchs = []
       mid_joueurs = 4
       for index in range(0, mid_joueurs):
