@@ -5,7 +5,7 @@ Si tournois existant reprendre
 sinon proposer un nouveau tournois 
 
 Avant de lancer le tour 1 
-Posez question voulez vous quitter ou commencer le tour 1  ? 
+Posez question voulez vous quitter ou commencer le tour 1  ?  X FAIT/
 Afficher les match du tour 
 J1 contre J5 
 J2 contre J6
@@ -17,7 +17,7 @@ si resultat J1 = 1 autre joueur = 0
 
 si 0  autre joueur = 1 
 
-Si 0.5 autre oueur 0.5
+Si 0.5 autre oueur 0.5 FAIT /
 
 Pour chaque tour Faire ça !
 

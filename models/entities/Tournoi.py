@@ -12,7 +12,7 @@ class Tournoi():
     self.joueurs = joueurs # une liste de 8 joueurs 
     self.controle_du_temps = controle_du_temps
     self.description = description
-    pprint(self.joueurs)
+    #pprint(self.joueurs)
 
 
 

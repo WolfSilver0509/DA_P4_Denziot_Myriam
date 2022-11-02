@@ -11,7 +11,7 @@ from models.managers.PlayerManager import PlayerManager
 from models.managers.TourManager import TourManager
 from models.managers.MatchManager import MatchManager
 from views.matchs import ViewMatchs
-
+from views.tours import ViewTours
 
 class TournoisController():
   """ Definition constructor player controller Tournois"""
@@ -26,15 +26,20 @@ class TournoisController():
     """ Ajout du tournois via le controller qui va faire la liaison entre le model et la view """
     if self.playerManager.has_enough_players():
       players=self.playerManager.list()
-
       nom, lieu, date_de_debut, nombre_de_tours, tournees,joueurs_json, controle_du_temps, description, joueurs = ViewTournois.add_tournament(players)
       tournoi = Tournoi(nom, lieu, date_de_debut, nombre_de_tours, tournees,joueurs_json, controle_du_temps, description)
       self.tournoi_manager.add(tournoi)
       ViewTournois.add_tournament_success()
-      self.go_play_tour(joueurs)
+      self.question_tour_start_stop(joueurs)
+      #self.go_play_tour(joueurs)
     else :
      ViewTournois.error_players8()
     
+  def question_tour_start_stop(self,joueurs):
+    """ Question avec condition : Si on commence un tour ou alors on quitte le programme dans controller tournois """
+    question = ViewMatchs.question_start_stop()
+    if question.startswith('o'):
+      self.go_play_tour(joueurs)
 
   def list_tournois(self):
     """ Fonction qui liste les players depuis tiny db dans tournois controller"""
@@ -43,7 +48,6 @@ class TournoisController():
 
   def go_play_tour(self, joueurs):
     """ Lancement du Tour 1 dans tournois controller """
-    
     for i in range(4):
       ViewTournois.display_message_start_tour(i)
       # Create tour
@@ -52,16 +56,28 @@ class TournoisController():
       joueurs = sorted(joueurs, key=lambda x: int(x['classement']), reverse= True )
       #pprint(joueurs) # trie des joueurs par classement 
       matchs = []
+      ongoing_matchs = []
       mid_joueurs = 4
+      
+      ViewTours.here_are_the_pairs()
       for index in range(0, mid_joueurs):
         joueur1 = joueurs[index]
         joueur2 = joueurs[mid_joueurs+index]
+        ongoing_matchs.append([joueur1, joueur2])
+        ViewTours.display_joueurs_match(joueur1, joueur2)
 
+      for paires in ongoing_matchs:
+        joueur1 = paires[0]
+        joueur2 = paires[1]
         resultatJ1, resultatJ2 = ViewMatchs.indicate_results(joueur1, joueur2)
         match = Match(joueur1,joueur2, resultatJ1, resultatJ2)
         self.match_manager.add(match)
         
         matchs.append(match)
+
+
+      # Tour fini, faire update
+        
 
       pprint(matchs)
         

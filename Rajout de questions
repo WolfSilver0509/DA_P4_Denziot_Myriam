@@ -1,0 +1,3 @@
+Rajout de la condition de la question dans controller tournois :
+-def question_tour_start_stop():
+Rajout de l'import de la views dans le controller tournois pour appeler la questions 

@@ -9,7 +9,7 @@ class TournoisManager():
     self.table = self.db.table('tournois')
 
   def add(self, tournoi: Tournoi):
-    print(tournoi.nom)
+    #print(tournoi.nom)
     """ Taper dans tiny db pour inserer dans la table les donnés saisie dans views Tournois"""
     self.table.insert({'Nom': tournoi.nom,
                     'Lieu': tournoi.lieu,

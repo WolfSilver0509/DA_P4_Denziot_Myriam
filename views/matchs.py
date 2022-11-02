@@ -8,10 +8,27 @@ class ViewMatchs():
     """ Affichage des résultats  dans views match """
     print ( f" Rentrez les résultats du match entre  {joueur1['prenom']}  {joueur1['nom_de_famille']} et {joueur2['prenom']} {joueur2['nom_de_famille']} : ")
     resultatJ1 = input('Résultat de '+joueur1['prenom']+' '+joueur1['nom_de_famille'] + ' ')
-    resultatJ2 = input('Résultat de '+joueur2['prenom']+' '+joueur2['nom_de_famille'] + ' ')
-
+    if(float(resultatJ1) > 1 or float(resultatJ1) < 0) :
+      print(" Veuillez rentrer 1 pour une victoire , 0 pour une défaite ou 0.5 pour une égalité. ")
+     #resultatJ2 = input('Résultat de '+joueur2['prenom']+' '+joueur2['nom_de_famille'] + ' ')
+    ########################################################
+    resultatJ1 = float(resultatJ1)
+    resultatJ2 = 1 - resultatJ1
+  
     print(f"Les résultats de ce match sont : {resultatJ1} pour {joueur1['prenom']} et {resultatJ2} pour {joueur2['prenom']} ")
     return resultatJ1, resultatJ2
 
+  @staticmethod 
+  def question_start_stop():
+    """ Question dans la views match pour print la question """
+    question = input(" Voulez-vous commencer le tour [ o pour oui ]  ou quitter le programme maintenant [ N pour non ]? 🚦 [o/N] ")
+    question = question.strip().lower() 
+    if question.startswith('n') or question == '':
+      print("Vous avez décidé de quitter le programme ! ")
+      SystemExit()
+    else : print("Répondez par 'o' ou 'n'")    
+    return question
 
     
+
+

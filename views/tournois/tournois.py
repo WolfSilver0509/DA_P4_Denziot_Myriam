@@ -12,9 +12,9 @@ class ViewTournois():
     nom = input("Nom :  ")
     lieu = input("Lieu :  ")
     date_de_debut = input("Date_de_debut :  ")
-    nombre_de_tours = input("Nombre de tours :  ")
+    nombre_de_tours = int(input("Nombre de tours (par défaut 4) : ") or "4")
     tournees = input("Tournees :  ")
-    print(" Merci de selec vos 8 joueurs ")
+    print(" Merci de selectionner 8 joueurs parmis les choix proposés, afin de pouvoir commencer un tournoi ! ")
     player_memory  = players
     chosen_id = []
     while len(selected_players) < 8:
@@ -28,7 +28,6 @@ class ViewTournois():
     controle_du_temps = input("Controle du temps :  ")
     description = input("Description  :  ")
     players = player_memory
-    pprint(players)
     # revoir la boucle l'index se fait pas
 
     return nom, lieu, date_de_debut, nombre_de_tours, tournees,selected_players_json, controle_du_temps, description,  selected_players 
@@ -36,7 +35,7 @@ class ViewTournois():
   @staticmethod
   def add_tournament_success():
     """ message d'ajout de tournois avec succés dans views tournois"""
-    print(" Tournois ajouté !!")
+    print(" Le Tournoi a été ajouté avec succès ! ")
    
   @staticmethod
   def list_tournois(tournois):
@@ -54,4 +53,11 @@ class ViewTournois():
     """ message start tour views tournois"""
     print("Le tour "+str(no_tour)+" commence !")
 
+  
 
+
+      
+
+    
+
+ 
