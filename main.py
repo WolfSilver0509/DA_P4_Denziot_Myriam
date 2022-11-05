@@ -35,7 +35,8 @@ if __name__=='__main__':
           controller = TournoisController()
           controller.list_tournois()
         elif option == 5:
-          print(" Faire fonction pour reprendre le tournois ")
+          controller = TournoisController()
+          controller.back_up_tournament()
         elif option == 6:
           print('C\'est fini ! ')
           exit()

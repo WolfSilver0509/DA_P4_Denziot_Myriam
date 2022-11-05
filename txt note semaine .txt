@@ -24,3 +24,22 @@ Pour chaque tour Faire ça !
 Ensuite re trier en fonction des résultats joueurs 
 
 Verifier si le pop n'est pas utliser 
+
+
+Le flek 8 : 
+Mettre l'option longeur ligne maximal fixé à 119 
+pip install flake8
+flake8 --max-doc-length 119 
+Faire un rapport générer en flek8_html
+pip install flake8-html
+flake8 --format=html --htmldir=flake-report
+
+
+    # boucle for pour parcourir la list tournois 
+    # verifier si l'index tournois en cours  = index qui est en paramêtre 
+    # Si oui je retourne le tournois en cours 
+    # A la fin de la boucle il sort de la boucle il return une list vide 
+
+
+
+couleur + scroes qui s'adittione 

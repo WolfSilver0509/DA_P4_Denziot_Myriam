@@ -8,5 +8,6 @@ class Match():
     self.resultatJ1 = resultatJ1
     self.resultatJ2 = resultatJ2
 
-
+  def serialize_match(self):
+    return self.__dict__
     # ajout identifiant tours

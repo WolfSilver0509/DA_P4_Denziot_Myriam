@@ -2,8 +2,9 @@ from pprint import pprint
 
 class Tournoi():
   """Modèle représentant un tournois."""
-  def __init__(self,nom,lieu,date_de_debut,nombre_de_tours,tournees,joueurs,controle_du_temps,description):
+  def __init__(self,index, nom,lieu,date_de_debut,nombre_de_tours,tournees,joueurs,controle_du_temps,description):
     """Initialise les détails relatifs au tournois."""
+    self.index = index
     self.nom = nom
     self.lieu = lieu
     self.date_de_debut = date_de_debut

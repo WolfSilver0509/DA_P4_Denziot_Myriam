@@ -1,4 +1,4 @@
-from views.players.player import ViewPlayer
+from views.player import ViewPlayer
 from models.entities.Joueur import Joueur
 from models.managers.PlayerManager import PlayerManager
 
