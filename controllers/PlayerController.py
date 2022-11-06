@@ -11,8 +11,8 @@ class PlayerController():
   def add_player(self):
     """ Instancier l'entité l15 / l16 j'appel mon manager dans laquel metho add dans player controller"""
    
-    nom_de_famille, prenom, date_de_naissance, sexe, classement = ViewPlayer.add_player()
-    player = Joueur(nom_de_famille, prenom, date_de_naissance, sexe, classement)
+    nom_de_famille, prenom, date_de_naissance, sexe, classement, total_score = ViewPlayer.add_player()
+    player = Joueur(nom_de_famille, prenom, date_de_naissance, sexe, classement, total_score)
     self.player_manager.add(player)
     ViewPlayer.add_player_success()
 

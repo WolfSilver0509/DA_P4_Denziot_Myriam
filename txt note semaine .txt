@@ -43,3 +43,6 @@ flake8 --format=html --htmldir=flake-report
 
 
 couleur + scroes qui s'adittione 
+
+Algo à ecrire sur le tour 2 -- reflexion dessus -
+disponible : 21h mardi 

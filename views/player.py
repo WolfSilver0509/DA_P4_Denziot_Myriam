@@ -12,8 +12,9 @@ class ViewPlayer():
     date_de_naissance = input("Date de naissance :  ")
     sexe = input("Sexe :  ")
     classement = input("Classement :  ")
+    total_score = 0
 
-    return nom_de_famille, prenom, date_de_naissance, sexe, classement
+    return nom_de_famille, prenom, date_de_naissance, sexe, classement, total_score
 
   @staticmethod
   def add_player_success():

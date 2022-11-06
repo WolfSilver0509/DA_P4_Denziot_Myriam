@@ -22,7 +22,7 @@ class ViewTournois():
         print(f"{index} : {playerChoice['prenom']} {playerChoice['nom_de_famille']} ")
       joueur = input("Joueur :  ")
       chosen_id.append(joueur)
-      selected_players_json.append(json.dumps(players[int(joueur)]))
+      selected_players_json.append(players[int(joueur)])
       selected_players.append(players[int(joueur)])
       players.pop(int(joueur))
     controle_du_temps = input("Controle du temps :  ")

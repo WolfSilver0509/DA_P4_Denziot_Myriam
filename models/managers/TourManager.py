@@ -30,11 +30,17 @@ class TourManager():
 
   def update(self, tour, matchs):
     """ Update des match dans le tour dans tourmanager"""
-    Tours = Query()
-    # Regarder l'update pour le faire fonctionner 
-    # Bien serialiser , a jour 
-    #TTe fin recup tour , match , fin 
-    print(self.table.search(Tours.Index== tour.index))
-    print(tour)
-    print(matchs)
+    Tours = Query() 
+    Tournois = Query()
+    # print(self.table.search(Tours.Index== tour.index))
+    # print(tour)
+    # print(matchs)
     self.table.update({'matchs': matchs}, Tours.Index == tour.index)
+    table_tournois = self.db.table('tournois')
+    player_list = []
+    for match in matchs:
+      player_list.append(match['joueur1'])
+      player_list.append(match['joueur2'])
+    table_tournois.update({'Joueurs': player_list}, Tournois.Index == tour.index_tournois)
+    
+    

@@ -12,9 +12,10 @@ class PlayerManager():
     print(player.nom_de_famille)
     self.table.insert({'Nom': player.nom_de_famille,
                     'Prenom': player.prenom,
-                    'Date de naissance': player.date_de_naissance,
+                    'Date_de_naissance': player.date_de_naissance,
                     'Sexe': player.sexe,
-                    'Classement': player.classement})
+                    'Classement': player.classement,
+                    'total_score' : player.total_score})
 
   def list(self): 
     """ Récupérer tous les players dans player manager """
@@ -23,7 +24,7 @@ class PlayerManager():
     players = self.table.all()
     instanciated_players = []
     for player in players:
-      joueur= Joueur(player["Nom"], player["Prenom"], player["Date de naissance"], player["Sexe"], player["Classement"]).serializer_player()
+      joueur= Joueur(player["Nom"], player["Prenom"], player["Date_de_naissance"], player["Sexe"], player["Classement"], player["total_score"]).serializer_player()
       instanciated_players.append(joueur)
 
     #NE PAS OUBLIER 

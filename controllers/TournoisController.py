@@ -53,7 +53,20 @@ class TournoisController():
     tournois = self.tournoi_manager.list()
     choice = ViewTournois.choice_tournament(tournois)
     tournoi = self.tournoi_manager.get_tournament_by_index(choice)
-    tour = self.tournoi_manager.recup_step_actualy(tournoi)
+    tour_actualy = self.tournoi_manager.recup_step_actualy(tournoi)
+    joueurs = tournoi[0]['Joueurs']
+    index = tournoi[0]['Index']
+    if tour_actualy == 0:
+      print("lancer tour 1")
+      self.question_tour_start_stop(joueurs, index)
+    elif tour_actualy == 1:
+      print("Lancer 2")
+    elif tour_actualy == 2:
+      print("Lancer 3")
+    elif tour_actualy == 3:
+      print("Lancer 4")
+    elif tour_actualy == 4:
+      print("Tournois finis")
     #print(tournoi)
 
   def go_play_tour(self, joueurs, index_tournois):
@@ -88,6 +101,8 @@ class TournoisController():
           couleur_joueur1 = 'Noir'
           couleur_joueur2 = 'Blanc'
         resultatJ1, resultatJ2 = ViewMatchs.indicate_results(joueur1, joueur2, couleur_joueur1, couleur_joueur2)
+        joueur1['total_score'] += resultatJ1
+        joueur2['total_score'] += resultatJ2
         match = Match(joueur1,joueur2, resultatJ1, resultatJ2)
         self.match_manager.add(match)
         matchs.append(match.serialize_match())
