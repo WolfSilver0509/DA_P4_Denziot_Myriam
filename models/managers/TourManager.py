@@ -43,4 +43,29 @@ class TourManager():
       player_list.append(match['joueur2'])
     table_tournois.update({'Joueurs': player_list}, Tournois.Index == tour.index_tournois)
     
+  def recup_all_match_in_tour(self, index_tournois):
+    """ Récupération de tous les tour via search dans tourManager"""
+    Tours=Query()
+    list_tour = self.table.search(Tours.Index_tournois == index_tournois)
+    #rint(list_tour)
+    match = []
+    for tour in list_tour:
+      match.extend(tour['matchs'])
+    return match
+
+  def verif_joueur_play_back(self, joueur_1, joueur_2, index ):
+    old_match = self.recup_all_match_in_tour(index)
+    #print(old_match)
+    for match in old_match:
+      # print(joueur_1['nom_de_famille'],joueur_2['nom_de_famille'] )
+      # print(match['joueur1']['nom_de_famille'], " contre ", match['joueur2']['nom_de_famille'])
+      print("="*100)
+      OJ1 = match['joueur1']['nom_de_famille']
+      OJ2 = match['joueur2']['nom_de_famille']
+      J1 = joueur_1['nom_de_famille']
+      J2 = joueur_2['nom_de_famille']
+      if (J1 == OJ1 and J2 == OJ2) or (J1 == OJ2 and J2 == OJ1):
+        return True
+    return False
+      
     

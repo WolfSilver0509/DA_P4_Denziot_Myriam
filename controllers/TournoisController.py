@@ -61,6 +61,7 @@ class TournoisController():
       self.question_tour_start_stop(joueurs, index)
     elif tour_actualy == 1:
       print("Lancer 2")
+      self.go_play_tour_2(joueurs, index)
     elif tour_actualy == 2:
       print("Lancer 3")
     elif tour_actualy == 3:
@@ -111,9 +112,22 @@ class TournoisController():
       #pprint(matchs)
       exit()
       #Definir match
+
+
+  
+  def go_play_tour_2(self, joueurs, index_tournois):
+    """lancer le tour 2 dans tournois controller """    
+    joueurs = sorted(joueurs, key=lambda x: float(x['total_score']), reverse= True )
+    for i, joueur_1 in enumerate(joueurs):
+      for joueur_2 in joueurs[1:]:
+        match_exist = self.tour_manager.verif_joueur_play_back(joueur_1, joueur_2, index_tournois)
+        if match_exist :
+          pass
+        else:
+          print(joueur_1['nom_de_famille'],joueur_2['nom_de_famille'])
+          # autre veirifcation qui vérifie si le match qu'on veut crée n'existe pas dns le tour qu'on veut crée ( Match variable stockage de match avant de rentrer dans la boucle for init variable match lorsuq'on est dans le else on va verifier si ca verifie au match ( params joueur 1 joueur 2  match ))
+          break
       
-      
-      
-      
-      
+    
+        
     
