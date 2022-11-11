@@ -54,6 +54,7 @@ class TourManager():
     return match
 
   def verif_joueur_play_back(self, joueur_1, joueur_2, index ):
+    """ Verification si le joueur à deja jouer dans un match dans tourmanager"""
     old_match = self.recup_all_match_in_tour(index)
     #print(old_match)
     for match in old_match:
