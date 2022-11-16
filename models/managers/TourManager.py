@@ -94,11 +94,11 @@ class TourManager():
                 return True
         return False
       
-       def recup_all_match(self):
-            """ Récupération de tous les tour via search dans tourManager"""
-            Tours=Query()
-            list_match = self.db.table('matchs').all()
-            #rint(list_tour)
+    def recup_all_match(self):
+        """ Récupération de tous les tour via search dans tourManager"""
+        Tours = Query()
+        list_match = self.db.table('matchs').all()
+        #rint(list_tour)
 
-            return list_match
+        return list_match
     
