@@ -61,13 +61,18 @@ class TournoisController():
             self.question_tour_start_stop(joueurs, index)
         elif tour_actualy == 1:
             print("Lancer 2")
-            self.go_play_tour_2(joueurs, index)
+            self.go_play_tour_2(joueurs, index, 1)
         elif tour_actualy == 2:
             print("Lancer 3")
+            self.go_play_tour_2(joueurs, index, 2)
         elif tour_actualy == 3:
             print("Lancer 4")
+            self.go_play_tour_2(joueurs, index, 3)
         elif tour_actualy == 4:
             print("Tournois finis")
+            match = self.tour_manager.recup_all_match()
+            for nom in match:
+                print(nom['joueur1']['nom_de_famille'], nom['joueur2']['nom_de_famille'])
         #print(tournoi)
 
     def go_play_tour(self, joueurs, index_tournois):
@@ -125,7 +130,7 @@ class TournoisController():
         #Rajouter n_tour a go play tour 2 quand je l'appelle . tour 2 = 1 etc
         self.tour_manager.add(tour)
         for i, joueur_1 in enumerate(joueurs):
-            for joueur_2 in joueurs[1:]:
+            for joueur_2 in joueurs:
                 match_exist = self.tour_manager.verif_joueur_play_back(joueur_1, joueur_2, index_tournois)
                 current_match_exist = False
                 if match_exist :
@@ -155,7 +160,7 @@ class TournoisController():
                         matchs.append(match.serialize_match())
                         match_current_tour.append(match.serialize_match())
                         tour.add_match(match)
-        self.tour_manager.update(tour, matchs)
+        self.tour_manager.update(tour, matchs, joueurs)
         print("Tour 2 Terminer")
 
         # autre veirifcation qui vérifie si le match qu'on veut crée n'existe pas dns le tour qu'on veut crée ( Match variable stockage de match avant de rentrer dans la boucle for init variable match lorsuq'on est dans le else on va verifier si ca verifie au match ( params joueur 1 joueur 2  match ))
