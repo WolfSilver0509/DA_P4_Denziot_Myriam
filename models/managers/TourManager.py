@@ -28,10 +28,17 @@ class TourManager():
         return index
 
 
-    def update(self, tour, matchs):
+    def update(self, tour, matchs, joueurs):
         """ Update des match dans le tour dans tourmanager"""
         Tours = Query()
         Tournois = Query()
+        player_not_play = []
+        for joueur in joueurs:
+            exist_player = [p for p in matchs if p['joueur1']['nom_de_famille'] == joueur['nom_de_famille'] or p['joueur2']['nom_de_famille'] == joueur['nom_de_famille']]
+
+            if not exist_player:
+                player_not_play.append(joueur)
+        print(player_not_play)
         # print(self.table.search(Tours.Index== tour.index))
         # print(tour)
         # print(matchs)
@@ -41,6 +48,8 @@ class TourManager():
         for match in matchs:
             player_list.append(match['joueur1'])
             player_list.append(match['joueur2'])
+        for player in player_not_play:
+            player_list.append(player)
         table_tournois.update({'Joueurs': player_list}, Tournois.Index == tour.index_tournois)
 
     def recup_all_match_in_tour(self, index_tournois):
@@ -85,4 +94,11 @@ class TourManager():
                 return True
         return False
       
+       def recup_all_match(self):
+            """ Récupération de tous les tour via search dans tourManager"""
+            Tours=Query()
+            list_match = self.db.table('matchs').all()
+            #rint(list_tour)
+
+            return list_match
     
