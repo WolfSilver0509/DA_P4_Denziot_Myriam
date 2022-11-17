@@ -20,9 +20,12 @@ class ViewMatchs():
     return resultatJ1, resultatJ2
 
   @staticmethod 
-  def question_start_stop():
+  def question_start_stop(n_tour_actualy):
     """ Question dans la views match pour print la question """
-    question = input(" Voulez-vous commencer le tour [ o pour oui ]  ou quitter le programme maintenant [ N pour non ]? 🚦 [o/N] ")
+    if n_tour_actualy != 1:
+      print(f"Le tour  {n_tour_actualy-1} est terminé. ")
+
+    question = input(f" Voulez-vous commencer le tour {n_tour_actualy} [ o pour oui ]  ou quitter le programme maintenant [ N pour non ]? 🚦 [o/N] ")
     question = question.strip().lower() 
     if question.startswith('n') or question == '':
       print("Vous avez décidé de quitter le programme ! ")

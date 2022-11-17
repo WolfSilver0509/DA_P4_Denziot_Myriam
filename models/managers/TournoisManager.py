@@ -22,7 +22,8 @@ class TournoisManager():
       'Tournees': tournoi.tournees,
       'Joueurs': tournoi.joueurs,
       'Controle du temps': tournoi.controle_du_temps,
-      'Description': tournoi.description
+      'Description': tournoi.description,
+      'Termine': 0
     })
 
   def list(self):
@@ -37,6 +38,18 @@ class TournoisManager():
                 tournoi["Controle du temps"], tournoi["Description"]))
     return instanciated_tournaments
 
+  def list_termine(self):
+    """ Récupérer tous les tournois non terminer  """
+    Tournois = Query()
+    tournois = self.table.search(Tournois.Termine == 0)
+    instanciated_tournaments = []
+    for tournoi in tournois:
+      instanciated_tournaments.append(
+        Tournoi(tournoi["Index"], tournoi["Nom"], tournoi["Lieu"],
+                tournoi["Date de debut"], tournoi["Nombre de tours"],
+                tournoi["Tournees"], tournoi["Joueurs"],
+                tournoi["Controle du temps"], tournoi["Description"]))
+    return instanciated_tournaments
   def list_index(self):
     """ Récupérer list index """
     tournois = self.table.all()
@@ -73,3 +86,8 @@ class TournoisManager():
     else:
       tour_actualy = 0
     return tour_actualy
+
+  def statut_tournois(self, index_tournois):
+    """ Statut tournois dans tournois manager """
+    Tournoi = Query()
+    self.table.update({'Termine': 1 }, Tournoi.Index == int(index_tournois))

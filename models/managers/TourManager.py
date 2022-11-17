@@ -77,7 +77,7 @@ class TourManager():
             if (J1 == OJ1 and J2 == OJ2) or (J1 == OJ2 and J2 == OJ1):
                 return True
         return False
-
+#Commentaires
     def verif_joueur_play_current_tour(self, joueur_1, joueur_2, match_current_tour ):
         """ Verification si le joueur à deja jouer dans le match actuel dans tourmanager"""
         old_match = match_current_tour
