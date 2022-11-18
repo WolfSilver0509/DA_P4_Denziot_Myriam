@@ -1,5 +1,7 @@
 from tinydb import TinyDB, Query
 from models.entities.Tour import Tour
+import datetime
+import json
 
 class TourManager():
     """ Manager de tour """
@@ -42,7 +44,7 @@ class TourManager():
         # print(self.table.search(Tours.Index== tour.index))
         # print(tour)
         # print(matchs)
-        self.table.update({'matchs': matchs}, Tours.Index == tour.index)
+        self.table.update({'matchs': matchs,'date_heure_fin': str(datetime.datetime.now())}, Tours.Index == tour.index)
         table_tournois = self.db.table('tournois')
         player_list = []
         for match in matchs:

@@ -11,7 +11,7 @@ class ViewMatchs():
     if(float(resultatJ1) > 1 or float(resultatJ1) < 0) :
       print(" Veuillez rentrer 1 pour une victoire , 0 pour une défaite ou 0.5 pour une égalité. ")
      #resultatJ2 = input('Résultat de '+joueur2['prenom']+' '+joueur2['nom_de_famille'] + ' ')
-    ########################################################
+    #####################
     resultatJ1 = float(resultatJ1)
     resultatJ2 = 1 - resultatJ1
     

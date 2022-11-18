@@ -20,3 +20,8 @@ class PlayerController():
         """ Fonction qui liste les players depuis tiny db dans player controller"""
         players = self.player_manager.list()
         ViewPlayer.list_players(players)
+
+    def list_players_by_rank(self):
+        """ Fonction qui liste les players par rank depuis tiny db dans player controller"""
+        players = self.player_manager.list_by_rank()
+        ViewPlayer.list_players(players)

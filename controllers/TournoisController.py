@@ -24,7 +24,7 @@ class TournoisController():
         self.match_manager = MatchManager()
 
     def add_tournament(self):
-        """ Ajout du tournois via le controller qui va faire la liaison entre le model et la view """
+        """ Ajout du tournoi via le controller qui va faire la liaison entre le model et la view """
         if self.playerManager.has_enough_players():
             index = self.tournoi_manager.list_index()
             players=self.playerManager.list()
@@ -54,6 +54,7 @@ class TournoisController():
         """ Fonction qui liste les players depuis tiny db dans tournois controller"""
         tournois = self.tournoi_manager.list()
         ViewTournois.list_tournois(tournois)
+
 
     def back_up_tournament(self,):
         """ Fonction qui liste les tournois depuis tiny db dans tournois controller"""

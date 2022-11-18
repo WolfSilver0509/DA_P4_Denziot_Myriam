@@ -25,7 +25,7 @@ class ViewPlayer():
   def list_players(players):
     """Liste des joueurs dans la views player"""
     for player in players:
-      print(player['nom_de_famille'] + " " +  player['prenom'])
+      print(player['classement'] + " " + player['nom_de_famille'] + " " +  player['prenom'])
     
 
    

@@ -19,18 +19,26 @@ class PlayerManager():
 
   def list(self): 
     """ Récupérer tous les players dans player manager """
-    #names = [player.get('Nom') for player in self.table.all()]
-     #= [player.get('Nom') for player in self.table.all()]
     players = self.table.all()
+    players = sorted(players, key=lambda x: x['Nom'], reverse=False)
     instanciated_players = []
     for player in players:
       joueur= Joueur(player["Nom"], player["Prenom"], player["Date_de_naissance"], player["Sexe"], player["Classement"], player["total_score"]).serializer_player()
       instanciated_players.append(joueur)
-
-    #NE PAS OUBLIER 
     return instanciated_players
-    #print(names)  # List of all text field values.
+
 
   def has_enough_players(self):
     """ Fonction pour verifier les 8 joueurs dans player manager"""
     return len(self.table)>= 8
+
+  def list_by_rank(self):
+    """ Récupérer tous les players par classement dans player manager"""
+    players = self.table.all()
+    players = sorted(players, key=lambda x: int(x['Classement']))
+    instanciated_players = []
+    for player in players:
+        joueur = Joueur(player["Nom"], player["Prenom"], player["Date_de_naissance"], player["Sexe"],
+                        player["Classement"], player["total_score"]).serializer_player()
+        instanciated_players.append(joueur)
+    return instanciated_players

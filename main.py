@@ -4,11 +4,12 @@ from controllers.TournoisController import TournoisController
 
 menu_options = {
   1: '➕ 🧞‍♀️ Nouveau Joueur',
-  2: '📋Listes des joueurs',
-  3: '➕♟️ Nouveau Tournois♟ ♟️',
-  4: '📋Listes des tournois',
-  5: '💢 Reprendre un tournois',
-  6: 'Exit',}
+  2: '➕♟️ Nouveau Tournois♟ ♟️',
+  3: '💢 Reprendre un tournois',
+  4: '📋Listes des joueurs par ordre alphabétique',
+  5: '📋Listes des joueurs par ordre de classement',
+  6: '📋Listes des tournois',
+  7: 'Exit',}
 
 def main():
   for key in menu_options.keys():
@@ -26,18 +27,21 @@ if __name__=='__main__':
           controller = PlayerController()
           controller.add_player()
         elif option == 2:
-          controller = PlayerController()
-          controller.list_players()
-        elif option == 3:
           controller = TournoisController()
           controller.add_tournament()
-        elif option == 4:
-          controller = TournoisController()
-          controller.list_tournois()
-        elif option == 5:
+        elif option == 3:
           controller = TournoisController()
           controller.back_up_tournament()
+        elif option == 4:
+          controller = PlayerController()
+          controller.list_players()
+        elif option == 5:
+            controller = PlayerController()
+            controller.list_players_by_rank()
         elif option == 6:
+          controller = TournoisController()
+          controller.list_tournois()
+        elif option == 7:
           print('C\'est fini ! ')
           exit()
         else:
