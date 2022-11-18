@@ -69,11 +69,7 @@ class TournoisManager():
     """ Recupération etapes actuels dans tournois manager """
     table = self.db.table('tours')
     Tour = Query()
-    #print(tournoi)
-    # doit afficher tournois en questions puis ligne 55 et 56 faire marcher
     tour= table.search(Tour.Index_tournois == tournoi[0]['Index'])
-    # print(tournoi[0]['Index'])
-    # print(tour)
     if tour:
       if len(tour) >= 4:
         tour_actualy = 4 
@@ -86,6 +82,8 @@ class TournoisManager():
     else:
       tour_actualy = 0
     return tour_actualy
+
+
 
   def statut_tournois(self, index_tournois):
     """ Statut tournois dans tournois manager """

@@ -7,22 +7,13 @@ from views.tournois import ViewTournois
 from models.entities.Tournoi import Tournoi
 from models.entities.Tour import Tour
 from models.entities.Match import Match # New
-from models.managers.TournoisManager import TournoisManager
-from models.managers.PlayerManager import PlayerManager
-from models.managers.TourManager import TourManager
-from models.managers.MatchManager import MatchManager
+from controllers.tournois_base_controller import BaseTournoisController
 from views.matchs import ViewMatchs
 from views.tours import ViewTours
 
-class TournoisController():
-    """ Definition constructor player controller Tournois """
-    def __init__(self):
-        """Définis son manager ' il va gerer tiny db'"""
-        self.tournoi_manager = TournoisManager()
-        self.playerManager = PlayerManager()
-        self.tour_manager = TourManager()
-        self.match_manager = MatchManager()
 
+class TournoisController(BaseTournoisController):
+    """ Definition constructor player controller Tournois """
     def add_tournament(self):
         """ Ajout du tournoi via le controller qui va faire la liaison entre le model et la view """
         if self.playerManager.has_enough_players():
@@ -53,7 +44,16 @@ class TournoisController():
     def list_tournois(self):
         """ Fonction qui liste les players depuis tiny db dans tournois controller"""
         tournois = self.tournoi_manager.list()
-        ViewTournois.list_tournois(tournois)
+        if tournois:
+            choice = ViewTournois.choice_tournament(tournois)
+            print(choice)
+            tournoi_choice = self.tournoi_manager.get_tournament_by_index(choice)
+            print(tournoi_choice)
+            print("Tournois 1")
+            self.recup_choice_to_play(choice)
+        else:
+            print("Pas de tournois en mémoire")
+
 
 
     def back_up_tournament(self,):
@@ -86,6 +86,8 @@ class TournoisController():
             #print(tournoi)
         else:
             print(" Tous les tournois sont terminés")
+
+
 
 
     def go_play_tour(self, joueurs, index_tournois):

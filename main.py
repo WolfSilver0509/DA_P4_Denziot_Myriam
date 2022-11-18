@@ -22,7 +22,7 @@ if __name__=='__main__':
         try:
             option = int(input('Entrer votre choix : '))
         except:
-            print('Wrong input. Please enter a number ...')
+            print('Mauvaise entrée. Veuillez entrer un nombre ...')
         if option == 1:
           controller = PlayerController()
           controller.add_player()
@@ -45,7 +45,7 @@ if __name__=='__main__':
           print('C\'est fini ! ')
           exit()
         else:
-          print('Choix Invalide.S\'il vous plait entrer un nombre entre 1 et 4.')
+          print('Choix Invalide.S\'il vous plait entrer un nombre entre 1 et 7.')
 
 if __name__ == 'main':
     main()
