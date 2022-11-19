@@ -28,7 +28,7 @@ class TourManager():
         return index
 
     def update(self, tour, matchs, joueurs):
-        """ Update des match dans le tour dans tourmanager"""
+        """ Update des matchs dans le tour dans tourmanager"""
         Tours = Query()
         Tournois = Query()
         player_not_play = []
@@ -38,7 +38,9 @@ class TourManager():
             if not exist_player:
                 player_not_play.append(joueur)
         print(player_not_play)
-        self.table.update({'matchs': matchs, 'date_heure_fin': str(datetime.datetime.now())}, Tours.Index == tour.index)
+        self.table.update(
+            {'matchs': matchs,
+             'date_heure_fin': str(datetime.datetime.now())}, Tours.Index == tour.index)
         table_tournois = self.db.table('tournois')
         player_list = []
         for match in matchs:

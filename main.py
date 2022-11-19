@@ -24,7 +24,7 @@ if __name__ == '__main__':
         option = input('Entrer votre choix : ')
         try:
             option = int(option)
-        except:
+        except Exception as ex:
             print('Mauvaise entrée. Veuillez entrer un nombre ...')
         if option == 1:
             controller = PlayerController()

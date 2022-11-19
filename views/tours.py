@@ -10,4 +10,8 @@ class ViewTours():
     @staticmethod
     def display_joueurs_match(joueur1, joueur2):
         """ message d'affichage des joueurs contres joueurs """
-        print(f" {joueur1['nom_de_famille']} {joueur1['prenom']} va affronter {joueur2['nom_de_famille']} {joueur2['prenom']} ")
+        J1 = f"{joueur1['nom_de_famille']} {joueur1['prenom']}"
+        J2 = f" {joueur2['nom_de_famille']} {joueur2['prenom']}"
+        print(f"Le match va opposé {J1} contre {J2}")
+        # print(f" {joueur1['nom_de_famille']} {joueur1['prenom']}
+        # va affronter {joueur2['nom_de_famille']} {joueur2['prenom']} ")
