@@ -16,8 +16,7 @@ class BaseTournoisController():
         self.match_manager = MatchManager()
         self.rapport_manager = RapportManager()
 
-
-    def recup_choice_to_play(self,tournoi_choice):
+    def recup_choice_to_play(self, tournoi_choice):
         """ fonction pour recupérer le choix de l'utilisateur"""
         choice = ViewRapport().menu_option_tournoi()
         if choice == 1:
@@ -45,13 +44,11 @@ class BaseTournoisController():
         list_player = self.rapport_manager.get_list_player_ranking(tournoi_choice)
         ViewPlayer.list_players(list_player)
 
-
     def list_tour_in_tournament(self, tournoi_choice):
         """ fonction pour la liste des tours dans un tournois"""
         print("Liste des tours dans un tournois")
         list_tour = self.rapport_manager.get_list_tour_in_tournament(tournoi_choice)
-        ViewRapport().display(list_tour,1)
-
+        ViewRapport().display(list_tour, 1)
 
     def list_match_in_tournament(self, tournoi_choice):
         """ fonction pour la liste des matchs dans un tournois"""

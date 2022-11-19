@@ -2,7 +2,7 @@
 
 class Tour():
     """Modèle représentant un tour."""
-    def __init__(self, index,index_tournois, nom, date_heure_debut, date_heure_fin):
+    def __init__(self, index, index_tournois, nom, date_heure_debut, date_heure_fin):
         """Initialise les détails relatifs au tour."""
         self.index = index
         self.index_tournois = index_tournois
@@ -10,7 +10,6 @@ class Tour():
         self.date_heure_debut = date_heure_debut
         self.date_heure_fin = date_heure_fin
         self.matchs = []
-        #ajout identifiant tournois auquels ils appartiens
 
     def add_match(self, match):
         """ Ajouter un match dans tour entities """
