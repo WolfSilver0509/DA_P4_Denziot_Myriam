@@ -1,13 +1,9 @@
 
-# menu_options = {
-#   1: '➕ 🧞 Liste des joueurs par ordre alphabétique',
-#   2: '📋Liste des joueurs par classement ',
-#   3: '💢 Listes de tous les tournois',
-#   4: 'Exit',}
 
-class MenuRapport():
+class ViewRapport():
   """Menu Rapport dans view menu repport """
   def menu_option_tournoi(self):
+    """ Menu Option tournoi dans viewRapport"""
     menu_options_par_tournois = {
       1: '➕♟Listes joueurs par tournois par ordre alphabétique ♟ ♟️',
       2: '📋♟Listes joueurs par tournois par classement ♟ ♟',
@@ -21,19 +17,12 @@ class MenuRapport():
     option = int(input('Entrer votre choix : '))
     return option
 
-  # if __name__=='__menu_option_tournoi__':
-  #     while(True):
-  #         menu_option_tournoi()
-  #         option = ''
-  #         try:
-  #             option = int(input('Entrer votre choix : '))
-  #         except:
-  #             print('Mauvaise entrée. Veuillez entrer un nombre ...')
-  #         if option == 1:
-  #           controller = PlayerController()
-  #           controller.add_player()
-  #         elif option == 2:
-  #           print('C\'est fini ! ')
-  #           exit()
-  #         else:
-  #           print('Choix Invalide.S\'il vous plait entrer un nombre entre 1 et 4.')
+  def display(self, list_tour, step):
+    """Affiche les tours d'un tournoi dans viewRapport"""
+    for tour in list_tour:
+      if step == 1:
+        print(tour['nom'])
+      for match in tour['matchs']:
+        print(match['joueur1']['nom_de_famille'], match['resultatJ1'], 'vs', match['joueur2']['nom_de_famille'], match['resultatJ2'])
+
+
