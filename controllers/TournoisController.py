@@ -116,7 +116,7 @@ class TournoisController(BaseTournoisController):
             resultatJ1, resultatJ2 = ViewMatchs.indicate_results(joueur1, joueur2, couleur_joueur1, couleur_joueur2)
             joueur1['total_score'] += resultatJ1
             joueur2['total_score'] += resultatJ2
-            match = Match(joueur1,joueur2, resultatJ1, resultatJ2)
+            match = Match(joueur1, joueur2, resultatJ1, resultatJ2)
             self.match_manager.add(match)
             matchs.append(match.serialize_match())
             tour.add_match(match)
