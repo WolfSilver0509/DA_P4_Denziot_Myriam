@@ -12,7 +12,7 @@ class PlayerController:
 
     def add_player(self):
         """Instancier l'entité l15 / l16 j'appel mon manager dans laquel metho add dans player controller"""
-
+        index = self.player_manager.list_index()
         (
             nom_de_famille,
             prenom,
@@ -22,7 +22,7 @@ class PlayerController:
             total_score,
         ) = ViewPlayer.add_player()
         player = Joueur(
-            nom_de_famille, prenom, date_de_naissance, sexe, classement, total_score
+            index, nom_de_famille, prenom, date_de_naissance, sexe, classement, total_score
         )
         self.player_manager.add(player)
         ViewPlayer.add_player_success()
@@ -36,3 +36,9 @@ class PlayerController:
         """Fonction qui liste les players par rank depuis tiny db dans player controller"""
         players = self.player_manager.list_by_rank()
         ViewPlayer.list_players(players)
+
+    def update_rank(self):
+        """Fonction qui update le rank depuis tiny db dans player controller"""
+        players = self.player_manager.list_by_rank()
+        player, classement = ViewPlayer.update_rank(players)
+        self.player_manager.update_player_rank(player, classement)

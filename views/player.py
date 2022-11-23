@@ -27,3 +27,16 @@ class ViewPlayer:
             print(
                 player["classement"] + " " + player["nom_de_famille"] + " " + player["prenom"]
             )
+
+    @staticmethod
+    def update_rank(players):
+        """Méthode pour mettre à jour le classement des joueurs dans la views player"""
+        for player in players:
+            print(
+                str(
+                    player["index"]
+                ) + " " + player["prenom"] + " " + player["nom_de_famille"] + " " + player["classement"]
+            )
+        player = input("Joueur :  ")
+        classement = input(" Nouveau Classement :  ")
+        return player, classement

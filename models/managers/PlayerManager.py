@@ -1,4 +1,4 @@
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 from models.entities.Joueur import Joueur
 
 
@@ -14,6 +14,7 @@ class PlayerManager:
         print(player.nom_de_famille)
         self.table.insert(
             {
+                "Index": player.index,
                 "Nom": player.nom_de_famille,
                 "Prenom": player.prenom,
                 "Date_de_naissance": player.date_de_naissance,
@@ -30,6 +31,7 @@ class PlayerManager:
         instanciated_players = []
         for player in players:
             joueur = Joueur(
+                player["Index"],
                 player["Nom"],
                 player["Prenom"],
                 player["Date_de_naissance"],
@@ -51,6 +53,7 @@ class PlayerManager:
         instanciated_players = []
         for player in players:
             joueur = Joueur(
+                player["Index"],
                 player["Nom"],
                 player["Prenom"],
                 player["Date_de_naissance"],
@@ -60,3 +63,21 @@ class PlayerManager:
             ).serializer_player()
             instanciated_players.append(joueur)
         return instanciated_players
+
+    def list_index(self):
+        """Récupérer list index player manager"""
+        joueurs = self.table.all()
+        index = 1
+        if joueurs:
+            index = joueurs[-1]["Index"] + 1
+        return index
+
+    def update_player_rank(self, player, classement):
+        """Fonction qui update le rank depuis tiny db dans player controller"""
+        Player = Query()
+        self.table.update({"Classement": classement}, Player.Index == int(player))
+        # Update
+        # 1 arguments disctionnaires de ce qui va changer
+        # 2eme argument la condition de la requete
+        # la condition se fait avec un Query qui vise la table
+        # et la condition est le nom de la colonne et la valeur de la colonne

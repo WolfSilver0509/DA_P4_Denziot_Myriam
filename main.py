@@ -9,7 +9,8 @@ menu_options = {
     4: "📋Listes des joueurs par ordre alphabétique",
     5: "📋Listes des joueurs par ordre de classement",
     6: "📋Listes des tournois",
-    7: "Exit",
+    7: "Mettre à jour le classement d'un joueur",
+    8: "Exit",
 }
 
 
@@ -45,6 +46,9 @@ if __name__ == "__main__":
             controller = TournoisController()
             controller.list_tournois()
         elif option == 7:
+            controller = PlayerController()
+            controller.update_rank()
+        elif option == 8:
             print("C'est fini ! ")
             exit()
         else:
