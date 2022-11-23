@@ -1,12 +1,11 @@
-
-class ViewPlayer():
-    """Affichage player en views """
+class ViewPlayer:
+    """Affichage player en views"""
 
     @staticmethod
     # statique methode pas besoin d'instancier la class
     # ( quand la méthode n'a pas besoin de faire appel à des prop ou à des méthodes de la class )
     def add_player():
-        """ méthode dans la views pour demander de rentrer les informations /"""
+        """méthode dans la views pour demander de rentrer les informations /"""
         nom_de_famille = input("Nom :  ")
         prenom = input("Prenom :  ")
         date_de_naissance = input("Date de naissance :  ")
@@ -18,11 +17,13 @@ class ViewPlayer():
 
     @staticmethod
     def add_player_success():
-        """ Fonction de print joueur ajouter avec succés Views players """
+        """Fonction de print joueur ajouter avec succés Views players"""
         print(" Joueur ajouté !")
 
     @staticmethod
     def list_players(players):
         """Liste des joueurs dans la views player"""
         for player in players:
-            print(player['classement'] + " " + player['nom_de_famille'] + " " + player['prenom'])
+            print(
+                player["classement"] + " " + player["nom_de_famille"] + " " + player["prenom"]
+            )

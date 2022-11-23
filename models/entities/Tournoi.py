@@ -1,17 +1,19 @@
-
-class Tournoi():
+class Tournoi:
     """Modèle représentant un tournoi."""
+
     def __init__(
-            self,
-            index,
-            nom,
-            lieu,
-            date_de_debut,
-            nombre_de_tours,
-            tournees, joueurs,
-            controle_du_temps,
-            description,
-            termine=0):
+        self,
+        index,
+        nom,
+        lieu,
+        date_de_debut,
+        nombre_de_tours,
+        tournees,
+        joueurs,
+        controle_du_temps,
+        description,
+        termine=0,
+    ):
         """Initialise les détails relatifs au tournoi."""
         self.index = index
         self.nom = nom

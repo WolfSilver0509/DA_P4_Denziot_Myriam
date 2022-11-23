@@ -1,12 +1,11 @@
-
-class ViewTournois():
-    """Affichage des tournois en views """
+class ViewTournois:
+    """Affichage des tournois en views"""
 
     @staticmethod
     # statique methode pas besoin d'instancier la class
     # ( quand la méthode n'a pas besoin de faire appel à des prop ou à des méthodes de la class )
     def add_tournament(players):
-        """ Ajouter un tournois dans views tournois"""
+        """Ajouter un tournois dans views tournois"""
         selected_players = []
         selected_players_json = []
         nom = input("Nom :  ")
@@ -14,12 +13,16 @@ class ViewTournois():
         date_de_debut = input("Date_de_debut :  ")
         nombre_de_tours = int(input("Nombre de tours (par défaut 4) : ") or "4")
         tournees = input("Tournees :  ")
-        print(" Merci de selectionner 8 joueurs parmis les choix proposés, afin de pouvoir commencer un tournoi ! ")
+        print(
+            " Merci de selectionner 8 joueurs parmis les choix proposés, afin de pouvoir commencer un tournoi ! "
+        )
         player_memory = players
         chosen_id = []
         while len(selected_players) < 8:
             for index, playerChoice in enumerate(players):
-                print(f"{index} : {playerChoice['prenom']} {playerChoice['nom_de_famille']} ")
+                print(
+                    f"{index} : {playerChoice['prenom']} {playerChoice['nom_de_famille']} "
+                )
             joueur = input("Joueur :  ")
             chosen_id.append(joueur)
             selected_players_json.append(players[int(joueur)])
@@ -29,15 +32,20 @@ class ViewTournois():
         description = input("Description  :  ")
         players = player_memory
         return (
-            nom, lieu, date_de_debut,
-            nombre_de_tours, tournees,
-            selected_players_json, controle_du_temps,
-            description, selected_players
+            nom,
+            lieu,
+            date_de_debut,
+            nombre_de_tours,
+            tournees,
+            selected_players_json,
+            controle_du_temps,
+            description,
+            selected_players,
         )
 
     @staticmethod
     def add_tournament_success():
-        """ message d'ajout de tournois avec succés dans views tournois"""
+        """message d'ajout de tournois avec succés dans views tournois"""
         print(" Le Tournoi a été ajouté avec succès ! ")
 
     @staticmethod
@@ -48,13 +56,13 @@ class ViewTournois():
 
     @staticmethod
     def error_players8():
-        """ message d'erreur de tournois dans views tournois"""
+        """message d'erreur de tournois dans views tournois"""
         print("Il vous faut minimum 8 Joueurs pour lancer un tournois !")
 
     @staticmethod
     def display_message_start_tour(no_tour):
-        """ message start tour views tournois"""
-        print("Le tour "+str(no_tour)+" commence !")
+        """message start tour views tournois"""
+        print("Le tour " + str(no_tour) + " commence !")
 
     @staticmethod
     def choice_tournament(tournois):

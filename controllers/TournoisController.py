@@ -1,5 +1,3 @@
-
-
 import json
 import datetime
 import random
@@ -13,13 +11,23 @@ from views.tours import ViewTours
 
 
 class TournoisController(BaseTournoisController):
-    """ Definition constructor player controller Tournois """
+    """Definition constructor player controller Tournois"""
+
     def add_tournament(self):
-        """ Ajout du tournoi via le controller qui va faire la liaison entre le model et la view """
+        """Ajout du tournoi via le controller qui va faire la liaison entre le model et la view"""
         if self.playerManager.has_enough_players():
             index = self.tournoi_manager.list_index()
             players = self.playerManager.list()
-            nom, lieu, date_de_debut, nombre_de_tours, tournees, joueurs_json, controle_du_temps, description, joueurs = ViewTournois.add_tournament(players)
+            n, l, d, t, tour, jjs, cdt, desc, jou = ViewTournois.add_tournament(players)
+            nom = n
+            lieu = l
+            date_de_debut = d
+            nombre_de_tours = t
+            tournees = tour
+            joueurs_json = jjs
+            controle_du_temps = cdt
+            description = desc
+            joueurs = jou
             tournoi = Tournoi(
                 index,
                 nom,
@@ -29,7 +37,7 @@ class TournoisController(BaseTournoisController):
                 tournees,
                 joueurs_json,
                 controle_du_temps,
-                description
+                description,
             )
             self.tournoi_manager.add(tournoi)
             ViewTournois.add_tournament_success()
@@ -38,9 +46,9 @@ class TournoisController(BaseTournoisController):
             ViewTournois.error_players8()
 
     def question_tour_start_stop(self, joueurs, index_tournois, n_tour_actualy):
-        """ Question avec condition : Reprendre ou quitter le tournois """
+        """Question avec condition : Reprendre ou quitter le tournois"""
         question = ViewMatchs.question_start_stop(n_tour_actualy)
-        if question.startswith('o'):
+        if question.startswith("o"):
             if n_tour_actualy == 1:
                 self.go_play_tour(joueurs, index_tournois)
             elif n_tour_actualy == 2:
@@ -51,7 +59,7 @@ class TournoisController(BaseTournoisController):
                 self.go_play_tour_2(joueurs, index_tournois, 4)
 
     def list_tournois(self):
-        """ Fonction qui liste les players depuis tiny db dans tournois controller"""
+        """Fonction qui liste les players depuis tiny db dans tournois controller"""
         tournois = self.tournoi_manager.list()
         if tournois:
             choice = ViewTournois.choice_tournament(tournois)
@@ -63,15 +71,17 @@ class TournoisController(BaseTournoisController):
         else:
             print("Pas de tournois en mémoire")
 
-    def back_up_tournament(self,):
-        """ Fonction qui liste les tournois depuis tiny db dans tournois controller"""
+    def back_up_tournament(
+        self,
+    ):
+        """Fonction qui liste les tournois depuis tiny db dans tournois controller"""
         tournois = self.tournoi_manager.list_termine()
         if tournois:
             choice = ViewTournois.choice_tournament(tournois)
             tournoi = self.tournoi_manager.get_tournament_by_index(choice)
             tour_actualy = self.tournoi_manager.recup_step_actualy(tournoi)
-            joueurs = tournoi[0]['Joueurs']
-            index = tournoi[0]['Index']
+            joueurs = tournoi[0]["Joueurs"]
+            index = tournoi[0]["Index"]
             if tour_actualy == 0:
                 print("lancer tour 1")
                 self.question_tour_start_stop(joueurs, index, 1)
@@ -89,19 +99,28 @@ class TournoisController(BaseTournoisController):
                 self.tournoi_manager.statut_tournois(index)
                 match = self.tour_manager.recup_all_match()
                 for nom in match:
-                    print(nom['joueur1']['nom_de_famille'], nom['joueur2']['nom_de_famille'])
+                    print(
+                        nom["joueur1"]["nom_de_famille"],
+                        nom["joueur2"]["nom_de_famille"],
+                    )
         else:
             print(" Tous les tournois sont terminés")
 
     def go_play_tour(self, joueurs, index_tournois):
-        """ Lancement du Tour 1 dans tournois controller """
+        """Lancement du Tour 1 dans tournois controller"""
 
         ViewTournois.display_message_start_tour(1)
         # Create tour
         index_tour = self.tour_manager.list_index()
-        tour = Tour(index_tour, index_tournois, "Round "+str(1), json.dumps(datetime.datetime.now(), default=str), '')
+        tour = Tour(
+            index_tour,
+            index_tournois,
+            "Round " + str(1),
+            json.dumps(datetime.datetime.now(), default=str),
+            "",
+        )
         self.tour_manager.add(tour)
-        joueurs = sorted(joueurs, key=lambda x: int(x['classement']), reverse=True)
+        joueurs = sorted(joueurs, key=lambda x: int(x["classement"]), reverse=True)
         matchs = []
         ongoing_matchs = []
         mid_joueurs = 4
@@ -109,7 +128,7 @@ class TournoisController(BaseTournoisController):
         ViewTours.here_are_the_pairs()
         for index in range(0, mid_joueurs):
             joueur1 = joueurs[index]
-            joueur2 = joueurs[mid_joueurs+index]
+            joueur2 = joueurs[mid_joueurs + index]
             ongoing_matchs.append([joueur1, joueur2])
             ViewTours.display_joueurs_match(joueur1, joueur2)
 
@@ -118,14 +137,16 @@ class TournoisController(BaseTournoisController):
             joueur2 = paires[1]
             k = random.randint(0, 1)
             if k == 0:
-                couleur_joueur1 = 'Blanc'
-                couleur_joueur2 = 'Noir'
+                couleur_joueur1 = "Blanc"
+                couleur_joueur2 = "Noir"
             else:
-                couleur_joueur1 = 'Noir'
-                couleur_joueur2 = 'Blanc'
-            resultatJ1, resultatJ2 = ViewMatchs.indicate_results(joueur1, joueur2, couleur_joueur1, couleur_joueur2)
-            joueur1['total_score'] += resultatJ1
-            joueur2['total_score'] += resultatJ2
+                couleur_joueur1 = "Noir"
+                couleur_joueur2 = "Blanc"
+            resultatJ1, resultatJ2 = ViewMatchs.indicate_results(
+                joueur1, joueur2, couleur_joueur1, couleur_joueur2
+            )
+            joueur1["total_score"] += resultatJ1
+            joueur2["total_score"] += resultatJ2
             match = Match(joueur1, joueur2, resultatJ1, resultatJ2)
             self.match_manager.add(match)
             matchs.append(match.serialize_match())
@@ -134,40 +155,45 @@ class TournoisController(BaseTournoisController):
         self.question_tour_start_stop(joueurs, index_tournois, 2)
 
     def go_play_tour_2(self, joueurs, index_tournois, n_tour):
-        """Lancer le tour 2 dans tournois controller """
-        joueurs = sorted(joueurs, key=lambda x: float(x['total_score']), reverse=True)
+        """Lancer le tour 2 dans tournois controller"""
+        joueurs = sorted(joueurs, key=lambda x: float(x["total_score"]), reverse=True)
         matchs = []
         match_current_tour = []
         index_tour = self.tour_manager.list_index()
         time_now = json.dumps(datetime.datetime.now(), default=str)
-        tour = Tour(index_tour, index_tournois, "Round " + str(n_tour), time_now, '')
+        tour = Tour(index_tour, index_tournois, "Round " + str(n_tour), time_now, "")
         self.tour_manager.add(tour)
         for i, joueur_1 in enumerate(joueurs):
             for joueur_2 in joueurs:
-                match_exist = self.tour_manager.verif_joueur_play_back(joueur_1, joueur_2, index_tournois)
+                match_exist = self.tour_manager.verif_joueur_play_back(
+                    joueur_1, joueur_2, index_tournois
+                )
                 current_match_exist = False
                 if match_exist:
                     pass
                 else:
                     if match_current_tour:
-                        current_match_exist = self.tour_manager.verif_joueur_play_current_tour(
-                            joueur_1,
-                            joueur_2,
-                            match_current_tour
+                        current_match_exist = (
+                            self.tour_manager.verif_joueur_play_current_tour(
+                                joueur_1, joueur_2, match_current_tour
+                            )
                         )
-                    if not current_match_exist and joueur_1['nom_de_famille'] != joueur_2['nom_de_famille']:
-                        print(joueur_1['nom_de_famille'], joueur_2['nom_de_famille'])
+                    if (
+                        not current_match_exist and joueur_1["nom_de_famille"] != joueur_2["nom_de_famille"]
+                    ):
+                        print(joueur_1["nom_de_famille"], joueur_2["nom_de_famille"])
                         k = random.randint(0, 1)
                         if k == 0:
-                            couleur_joueur1 = 'Blanc'
-                            couleur_joueur2 = 'Noir'
+                            couleur_joueur1 = "Blanc"
+                            couleur_joueur2 = "Noir"
                         else:
-                            couleur_joueur1 = 'Noir'
-                            couleur_joueur2 = 'Blanc'
+                            couleur_joueur1 = "Noir"
+                            couleur_joueur2 = "Blanc"
                         resultatJ1, resultatJ2 = ViewMatchs.indicate_results(
-                            joueur_1, joueur_2, couleur_joueur1, couleur_joueur2)
-                        joueur_1['total_score'] += resultatJ1
-                        joueur_2['total_score'] += resultatJ2
+                            joueur_1, joueur_2, couleur_joueur1, couleur_joueur2
+                        )
+                        joueur_1["total_score"] += resultatJ1
+                        joueur_2["total_score"] += resultatJ2
                         match = Match(joueur_1, joueur_2, resultatJ1, resultatJ2)
                         self.match_manager.add(match)
                         matchs.append(match.serialize_match())
@@ -175,7 +201,7 @@ class TournoisController(BaseTournoisController):
                         tour.add_match(match)
         self.tour_manager.update(tour, matchs, joueurs)
         if n_tour != 4:
-            self.question_tour_start_stop(joueurs, index_tournois, n_tour+1)
+            self.question_tour_start_stop(joueurs, index_tournois, n_tour + 1)
         else:
             print("Le tournois est terminé ! ")
             self.tournoi_manager.statut_tournois(index_tournois)
