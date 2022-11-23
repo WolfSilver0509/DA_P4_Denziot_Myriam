@@ -28,7 +28,12 @@ class ViewTournois():
         controle_du_temps = input("Controle du temps :  ")
         description = input("Description  :  ")
         players = player_memory
-        return nom, lieu, date_de_debut, nombre_de_tours, tournees, selected_players_json, controle_du_temps, description, selected_players
+        return (
+            nom, lieu, date_de_debut,
+            nombre_de_tours, tournees,
+            selected_players_json, controle_du_temps,
+            description, selected_players
+        )
 
     @staticmethod
     def add_tournament_success():

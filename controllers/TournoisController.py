@@ -20,7 +20,17 @@ class TournoisController(BaseTournoisController):
             index = self.tournoi_manager.list_index()
             players = self.playerManager.list()
             nom, lieu, date_de_debut, nombre_de_tours, tournees, joueurs_json, controle_du_temps, description, joueurs = ViewTournois.add_tournament(players)
-            tournoi = Tournoi(index, nom, lieu, date_de_debut, nombre_de_tours, tournees, joueurs_json, controle_du_temps, description)
+            tournoi = Tournoi(
+                index,
+                nom,
+                lieu,
+                date_de_debut,
+                nombre_de_tours,
+                tournees,
+                joueurs_json,
+                controle_du_temps,
+                description
+            )
             self.tournoi_manager.add(tournoi)
             ViewTournois.add_tournament_success()
             self.question_tour_start_stop(joueurs, index, 1)
