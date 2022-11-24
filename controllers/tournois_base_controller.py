@@ -18,7 +18,7 @@ class BaseTournoisController:
         self.match_manager = MatchManager()
         self.rapport_manager = RapportManager()
 
-    def recup_choice_to_play(self, tournoi_choice):
+    def recup_choice_to_play(self, tournoi_choice, tournoi):
         """fonction pour recupérer le choix de l'utilisateur"""
         choice = ViewRapport().menu_option_tournoi()
         if choice == 1:
@@ -30,9 +30,15 @@ class BaseTournoisController:
         elif choice == 4:
             self.list_match_in_tournament(tournoi_choice)
         elif choice == 5:
+            players = tournoi[0]['Joueurs']
+            player, classement = ViewRapport().update_rank(players)
+            print(player)
+            print(classement)
+            self.playerManager.update_player_rank(player, classement)
+        elif choice == 6:
             print("Retour au menu tournois")
-        if choice != 5:
-            return self.recup_choice_to_play(tournoi_choice)
+        if choice != 6:
+            return self.recup_choice_to_play(tournoi_choice, tournoi)
 
     def list_player_tournament_alpha(self, tournoi_choice):
         """fonction pour la liste des joueurs par ordre alphabetique"""

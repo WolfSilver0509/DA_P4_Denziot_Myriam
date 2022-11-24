@@ -78,7 +78,7 @@ class TournoisManager:
         return index
 
     def get_tournament_by_index(self, index):
-        """Récupérer tournois par index dans tournois manager"""
+        """Récupérer tournois par index dans tournoi manager"""
         Tournoi = Query()
         tournois = self.table.search(Tournoi.Index == int(index))
         return tournois

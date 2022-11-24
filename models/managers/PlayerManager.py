@@ -8,6 +8,7 @@ class PlayerManager:
     def __init__(self):
         self.db = TinyDB("db.json")
         self.table = self.db.table("joueurs")
+        self.table_tournoi = self.db.table("tournois")
 
     def add(self, player: Joueur):
         """Taper dans tiny db pour insérer dans la table les données saisies dans player manager"""
@@ -75,9 +76,22 @@ class PlayerManager:
     def update_player_rank(self, player, classement):
         """Fonction qui update le rank depuis tiny db dans player controller"""
         Player = Query()
+        Tournoi = Query()
         self.table.update({"Classement": classement}, Player.Index == int(player))
         # Update
         # 1 arguments disctionnaires de ce qui va changer
         # 2eme argument la condition de la requete
         # la condition se fait avec un Query qui vise la table
         # et la condition est le nom de la colonne et la valeur de la colonne
+        players = self.table.search(Player.Index == int(player))
+        tournois = self.table_tournoi.all()
+        player = players[0]
+        for tournoi in tournois:
+            tournoi_players = tournoi["Joueurs"]
+            for index, tournoi_player in enumerate(tournoi_players):
+                if tournoi_player["index"] == player["Index"]:
+                    tournoi_player["classement"] = player["Classement"]
+                    tournoi_players[index] = tournoi_player
+                    self.table_tournoi.update(
+                        {"Joueurs": tournoi_players}, Tournoi.Index == int(tournoi["Index"]))
+

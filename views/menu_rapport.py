@@ -8,7 +8,8 @@ class ViewRapport:
             2: "📋♟Listes joueurs par tournois par classement ♟ ♟",
             3: "📋 Listes de tous les tour par tournois",
             4: "♟ Listes de tous les matchs par tournois",
-            5: "Retour au menu",
+            5: "♟ Modifier le classement d'un joueur",
+            6: "Retour au menu",
         }
 
         for key in menu_options_par_tournois.keys():
@@ -29,3 +30,15 @@ class ViewRapport:
                     match["joueur2"]["nom_de_famille"],
                     match["resultatJ2"],
                 )
+
+    def update_rank(self, players):
+        """Méthode pour mettre à jour le classement des joueurs dans la views menu-rapport"""
+        for player in players:
+            print(
+                str(
+                    player["index"]
+                ) + " " + player["prenom"] + " " + player["nom_de_famille"] + " " + player["classement"]
+            )
+        player = input("Joueur :  ")
+        classement = input(" Nouveau Classement :  ")
+        return player, classement
