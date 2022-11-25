@@ -105,6 +105,34 @@ python main.py
 python main.py
 ```
 
+
+### Générer un rapport Flake8 HTML sur le programme Python :
+
+:point_right: Dans le terminal dans votre dossier :
+```
+(env) C:\Users\wolf\Desktop\DemoChess>
+```
+
+:point_right: Pour voir si il y a des erreur de Flake8 :
+```
+(env) C:\Users\wolf\Desktop\DemoChess> Flake8
+```
+
+:point_right: Si il n'y a pas d'erreur il ne vous affichera rien et vous aurez de nouveau :
+```
+(env) C:\Users\wolf\Desktop\DemoChess> 
+```
+
+:point_right: Pour générer un rapport Flake8 HTML :
+```
+flake8 --format=html --htmldir=flake-report
+```
+:point_right: Celà fait un nouveau dossier nommée "Flake-report" est apparue !
+
+:point_right: Vous pouvez vous rendre dedans et ouvrire dans un navigateur le fichier Index.html 
+
+:point_right:La page s'ouvre , si il vous affiche un bandeau vert avec all Good !  - Tout est bon !!  :
+
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
 
