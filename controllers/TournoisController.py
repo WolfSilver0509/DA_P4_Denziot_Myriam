@@ -63,10 +63,8 @@ class TournoisController(BaseTournoisController):
         tournois = self.tournoi_manager.list()
         if tournois:
             choice = ViewTournois.choice_tournament(tournois)
-            print(choice)#
             tournoi_choice = self.tournoi_manager.get_tournament_by_index(choice)
-            print(tournoi_choice)#
-            print("Tournois 1")
+            # print("Tournois 1")
             self.recup_choice_to_play(choice, tournoi_choice)
         else:
             print("Pas de tournois en mémoire")

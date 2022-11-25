@@ -94,4 +94,3 @@ class PlayerManager:
                     tournoi_players[index] = tournoi_player
                     self.table_tournoi.update(
                         {"Joueurs": tournoi_players}, Tournoi.Index == int(tournoi["Index"]))
-
